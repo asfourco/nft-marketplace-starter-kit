@@ -1,25 +1,26 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract ERC721 {
-    event Transfer(
-        address indexed from,
-        address indexed to,
-        uint256 indexed tokenId
-    );
+import "./ERC165.sol";
+import "./interfaces/IERC721.sol";
 
-    event Approval(
-        address indexed owner,
-        address indexed approved,
-        uint256 indexed tokenId
-    );
-
+contract ERC721 is ERC165, IERC721 {
     // Mapping from token id to the owner
     mapping(uint256 => address) private _tokenOwner;
     // Mapping from owner to number of owned tokens
     mapping(address => uint256) private _ownedTokensCount;
     // Mapping from token id to approved addresses
     mapping(uint256 => address) private _tokenApprovals;
+
+    constructor() {
+        _registerInterface(
+            bytes4(
+                keccak256("balanceOf(bytes4)") ^
+                    keccak256("ownerOf(bytes4)") ^
+                    keccak256("transferFrom(bytes4)")
+            )
+        );
+    }
 
     function _exists(uint256 tokenId) internal view returns (bool) {
         address owner = _tokenOwner[tokenId];
@@ -92,12 +93,12 @@ contract ERC721 {
         return (spender == owner || getApproved(tokenId) == spender);
     }
 
-    function getApproved(uint256 tokenId) internal view returns (address) {
+    function getApproved(uint256 _tokenId) internal view returns (address) {
         require(
-            _exists(tokenId),
+            _exists(_tokenId),
             "ERC721: approved query for nonexistent token"
         );
-        return _tokenApprovals[tokenId];
+        return _tokenApprovals[_tokenId];
     }
 
     function balanceOf(address _owner) public view returns (uint256) {
