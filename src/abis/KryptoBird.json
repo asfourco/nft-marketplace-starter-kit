@@ -17629,12 +17629,12 @@
     "1337": {
       "events": {},
       "links": {},
-      "address": "0x802ef98EAF40c613b53Aa5F8CDDBa350Fc88fE38",
-      "transactionHash": "0x5433e620c7948d742c01972acbf79250f8a9b877130990601115c7837f11e154"
+      "address": "0x9B53D5D66b15Fc42A00Ea3263D1ba3a1790687D4",
+      "transactionHash": "0xf4c612320e35895d83a031345e02669ed2d36406fb1730ceb578b828040b59ca"
     }
   },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-06-25T20:46:49.461Z",
+  "updatedAt": "2022-06-26T17:50:01.778Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
