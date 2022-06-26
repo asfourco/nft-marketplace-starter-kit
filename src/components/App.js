@@ -75,7 +75,7 @@ class App extends Component {
     render() {
         return (
             <div className='container-filled'>
-                {console.log(this.state.kryptoBirdz)}
+                {console.log(this.state)}
                 <nav className='navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow'>
                     <div className='navbar-brand col-sm-3 col-md-3 mr-0' style={{ color: 'white' }}>
                         Krypto Birdz NFTs (Non Fungible Tokens)
@@ -120,7 +120,7 @@ class App extends Component {
                     <div className='row textCenter'>
                         {this.state.kryptoBirdz.map((kryptobird, key) => {
                             return (
-                                <div>
+                                <div key={key}>
                                     <div>
                                         <MDBCard className='token img' style={{maxWidth: '22rem'}}>
                                             <MDBCardImage src={kryptobird} position='top' height='250rem' style={{marginRight:'4px'}} />
